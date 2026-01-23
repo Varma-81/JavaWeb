@@ -1,0 +1,31 @@
+package com.ibm.staticfeature;
+
+
+class Test
+{
+	static int value;
+	
+	Test()
+	{
+		System.out.println("Constructor Called");
+	}
+	
+	static
+	{
+		System.out.println("Static Initializer Called");
+		value=15;
+	}
+	
+	{
+		System.out.println("Inline Block Called");
+	}
+}
+
+public class Application
+{
+	public static void main( String[] args )
+	{
+		new Test();
+	}
+	
+}

@@ -1,0 +1,18 @@
+package com.ibm.staticfeature;
+
+
+class Test
+{
+	int value;
+}
+
+public class Application
+{
+	public static void main( String[] args )
+	{
+		Test test = new Test();
+		//test.value=8;
+		
+		System.out.println();
+	}
+}

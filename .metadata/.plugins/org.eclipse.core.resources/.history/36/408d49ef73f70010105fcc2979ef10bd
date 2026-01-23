@@ -1,0 +1,7 @@
+package com.ibm.encapsulation.pack2;
+
+import com.ibm.encapsulation.pack1.Base1;
+
+public class Derived extends Base1 {
+
+}

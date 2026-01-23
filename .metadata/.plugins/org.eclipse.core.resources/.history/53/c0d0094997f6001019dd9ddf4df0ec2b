@@ -1,0 +1,13 @@
+package com.ibm.client.cui;
+
+import java.sql.*;
+import java.util.Date;
+public class MainApp{
+	
+	Date date;
+	
+	public static void main(String[] args) {
+		System.out.println("Hello IBM");
+		
+	}
+}

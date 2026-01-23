@@ -1,0 +1,22 @@
+package com.ibm.arrays;
+
+public class Application
+{
+	public static void main( String[] args )
+	{
+		int numbers[];
+		
+		numbers = new int[5];
+		
+		System.out.println(numbers.length);
+		
+		numbers[2] = 6;
+		
+		for(int num:numbers)
+		{
+			System.out.println(num);
+		}
+		
+		
+	}
+}
