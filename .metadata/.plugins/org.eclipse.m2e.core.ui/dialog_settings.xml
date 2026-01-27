@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\PathuriNithin\eclipse-workspace\exception"/>
 			<item value="C:\PathuriNithin\eclipse-workspace\FirstApp"/>
 		</list>
 		<list key="projectNameTemplate">
@@ -26,15 +27,18 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
-			<item value="com.ibm.oops"/>
-			<item value="com.ibm.enums"/>
+			<item value="com.ibm.collections"/>
+			<item value="com.ibm.objectclass"/>
+			<item value="co.ibm.interfaces"/>
 		</list>
 		<list key="groupId">
 			<item value="com.ibm"/>
+			<item value="co.ibm"/>
 		</list>
 		<list key="artifactId">
-			<item value="oops"/>
-			<item value="enums"/>
+			<item value="collections"/>
+			<item value="objectclass"/>
+			<item value="interfaces"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
