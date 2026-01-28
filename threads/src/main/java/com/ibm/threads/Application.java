@@ -1,51 +1,54 @@
 package com.ibm.threads;
 
-class Runner implements Runnable
-{
-	public void run()
-	{
-		System.out.println("The current thread is "+Thread.currentThread());
-		try
-		{
-			Thread.sleep(1000);
-		}catch(InterruptedException e)
-		{
-			e.printStackTrace();
-		}
-	}
-}
-
-
+import java.util.Date;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Application
 {
 	public static void main( String[] args )
 	{
+//		
+//		int vCPUs=Runtime.getRuntime().availableProcessors();
+//		System.out.println(vCPUs);
+//		ScheduledExecutorService service=Executors.newScheduledThreadPool(vCPUs);
+//		
+//		System.out.println(new Date());
+//		service.schedule(new Task(1), 10, TimeUnit.SECONDS);
+//		service.scheduleAtFixedRate(new Task(2), 10,5,TimeUnit.SECONDS);
+//		service.scheduleWithFixedDelay(new Task(3),10,5, TimeUnit.SECONDS);//After Task Completes,it re-schedule the task
+//		service.shutdown();
 		
-		Runner runner = new Runner();
-		Thread producer = new Thread(runner,"Producer");
-		Thread consumer = new Thread(runner,"Consumer");
-	
-//		System.out.println(producer);
-//		System.out.println(producer.getState());
 		
-		producer.start();
-		consumer.start();
+		ExecutorService service=Executors.newCachedThreadPool();
 		
-		
-		try 
+		for(int counter=0;counter<10;counter++)
 		{
-//			Thread.sleep(1000);
-			producer.join();
-			consumer.join();
-		}catch(InterruptedException e)
-		{
-			e.printStackTrace();
+			service.submit(new Task(counter));
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		
-		System.out.println(producer.getState());
-		System.out.println(consumer.getState());
 		System.out.println("The End");
+		
+	
+		
+		
+//		ExecutorService executorService =Executors.newFixedThreadPool(4);
+//		
+//		for(int counter=0;counter<10;counter++)
+//		{
+//			System.out.println(executorService.submit(new Task(counter)));
+//		}
+//		
+//		executorService.shutdown();
+//		System.out.println("The End");
 		
 	}
 }

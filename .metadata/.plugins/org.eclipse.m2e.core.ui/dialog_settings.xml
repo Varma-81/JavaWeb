@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\PathuriNithin\eclipse-workspace\threads\src\main\java\com\ibm\threads\Application.java"/>
 			<item value="C:\PathuriNithin\eclipse-workspace\exception"/>
 			<item value="C:\PathuriNithin\eclipse-workspace\FirstApp"/>
 		</list>
@@ -27,6 +28,10 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.ibm.iostream"/>
+			<item value="com.ibm.anonymous"/>
+			<item value="com.ibm.lambdas"/>
+			<item value="com.ibm.assignment"/>
 			<item value="com.ibm.collections"/>
 			<item value="com.ibm.objectclass"/>
 			<item value="co.ibm.interfaces"/>
@@ -36,6 +41,10 @@
 			<item value="co.ibm"/>
 		</list>
 		<list key="artifactId">
+			<item value="iostream"/>
+			<item value=" anonymous"/>
+			<item value="lambdas"/>
+			<item value="assignment"/>
 			<item value="collections"/>
 			<item value="objectclass"/>
 			<item value="interfaces"/>
