@@ -23,19 +23,24 @@ public class Application
 //		service.shutdown();
 		
 		
-		ExecutorService service=Executors.newCachedThreadPool();
+//		ExecutorService service=Executors.newCachedThreadPool();
+//		
+//		for(int counter=0;counter<10;counter++)
+//		{
+//			service.submit(new Task(counter));
+//			try {
+//				Thread.sleep(1000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//		System.out.println("The End");
 		
-		for(int counter=0;counter<10;counter++)
-		{
-			service.submit(new Task(counter));
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		System.out.println("The End");
+		Thread t = new Thread(()->
+		System.out.println("Thread"));
+		t.start();
+		System.out.println("Main");
 		
 	
 		

@@ -1,8 +1,0 @@
-package com.ibm.enums.types;
-
-public enum Apple {
-	RED_DEL,
-	GOLDEN_DEL,
-	FUJI,
-	GREEN
-}

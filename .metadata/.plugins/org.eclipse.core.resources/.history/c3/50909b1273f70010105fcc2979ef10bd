@@ -1,8 +1,0 @@
-package com.ibm.encapsulation;
-
-public class Base1 {
-	int deff;
-	protected int prof;
-	private int prif;
-	public int pubf;
-}

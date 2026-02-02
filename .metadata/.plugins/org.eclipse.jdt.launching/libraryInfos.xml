@@ -30,4 +30,5 @@
             <entry path="C:\Program Files\Java\jre1.8.0_481\lib\endorsed"/>
         </endorsedDirs>
     </libraryInfo>
+    <libraryInfo home="C:\Program Files\Java\jdk-21.0.10" version="21.0.10"/>
 </libraryInfos>
