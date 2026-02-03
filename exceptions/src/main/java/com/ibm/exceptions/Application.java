@@ -54,9 +54,18 @@ public class Application
 	
 	public static void main( String[] args ) throws IOException
 	{
+		
+//		FileReader fr = new FileReader("./src/main/resources/File1.txt");
+//		try
+//		{
+//			throw new RuntimeException("Error Reading File");
+//		}finally
+//		{
+//			fr.close();
+//		}
 
-		//7.Throws and Throw keyword together
-		readFile("./src/main/resources/File1.txt");
+//7.Throws and Throw keyword together
+//readFile("./src/main/resources/File1.txt");
 		
 		
 //6.throws keyword		

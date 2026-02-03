@@ -28,34 +28,19 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
-			<item value="com.ibm.annotations"/>
-			<item value="com.ibm.internationalization"/>
-			<item value="com.ibm.spring"/>
-			<item value="com.ibm.jdbc"/>
-			<item value="com.ibm.iostream"/>
-			<item value="com.ibm.anonymous"/>
-			<item value="com.ibm.lambdas"/>
-			<item value="com.ibm.assignment"/>
-			<item value="com.ibm.collections"/>
-			<item value="com.ibm.objectclass"/>
-			<item value="co.ibm.interfaces"/>
+			<item value="com.ibm.thread"/>
+			<item value="com.ibm.springmvc"/>
+			<item value="com.ibm.springjdbcb1"/>
+			<item value="com.ibm.springjdbc"/>
 		</list>
 		<list key="groupId">
 			<item value="com.ibm"/>
-			<item value="co.ibm"/>
 		</list>
 		<list key="artifactId">
-			<item value="annotations"/>
-			<item value="internationalization"/>
-			<item value="spring"/>
-			<item value="jdbc"/>
-			<item value="iostream"/>
-			<item value=" anonymous"/>
-			<item value="lambdas"/>
-			<item value="assignment"/>
-			<item value="collections"/>
-			<item value="objectclass"/>
-			<item value="interfaces"/>
+			<item value="thread"/>
+			<item value="springmvc"/>
+			<item value="springjdbcb1"/>
+			<item value="springjdbc"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
