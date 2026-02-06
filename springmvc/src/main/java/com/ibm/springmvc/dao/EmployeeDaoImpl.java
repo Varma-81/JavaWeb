@@ -1,7 +1,5 @@
 package com.ibm.springmvc.dao;
 
-import javax.sql.DataSource;
-
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +10,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	private JdbcTemplate jdbcTemplateObject;
 	
-	public EmployeeDaoImpl(JdbcTemplate jdbcTemplate) {
+	public EmployeeDaoImpl(JdbcTemplate jdbcTemplate){
 		this.jdbcTemplateObject = jdbcTemplate;
 	}
 	
