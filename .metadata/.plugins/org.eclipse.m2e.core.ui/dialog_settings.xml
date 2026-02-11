@@ -28,6 +28,8 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.ibm.casestudy"/>
+			<item value="com.ibm.employeesystem"/>
 			<item value="com.ibm.employee"/>
 			<item value="com.ibm.unittesting"/>
 			<item value="com.ibm.jdbc"/>
@@ -36,6 +38,8 @@
 			<item value="com.ibm"/>
 		</list>
 		<list key="artifactId">
+			<item value="casestudy"/>
+			<item value="employeesystem"/>
 			<item value="employee"/>
 			<item value="unittesting"/>
 			<item value="jdbc"/>
