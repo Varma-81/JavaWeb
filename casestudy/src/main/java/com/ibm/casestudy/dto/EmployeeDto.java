@@ -3,6 +3,7 @@ package com.ibm.casestudy.dto;
 import java.time.LocalDate;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
@@ -22,13 +23,13 @@ public class EmployeeDto {
 	@Pattern(regexp = "^[A-za-z]+$", message="Only Letters are allowed")
 	private String lastName;
 	
-	@NotBlank(message="BirthDate is required")
+	@NotNull(message="BirthDate is required")
 	@PastOrPresent(message = "Birth Date cannot be in the future")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate birthDate;
 	
 	@NotBlank(message="Position is required")
-	@Pattern(regexp = "^[A-za-z]+$", message="Only Letters are allowed")
+	@Pattern(regexp = "^[A-Za-z]+$", message="Only Letters are allowed")
 	private String position;
 
 	public Long getId() {

@@ -28,6 +28,8 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.ibm.springajax"/>
+			<item value="com.ibm.springmvc2"/>
 			<item value="com.ibm.casestudy"/>
 			<item value="com.ibm.employeesystem"/>
 			<item value="com.ibm.employee"/>
@@ -38,6 +40,8 @@
 			<item value="com.ibm"/>
 		</list>
 		<list key="artifactId">
+			<item value="springajax"/>
+			<item value="springmvc2"/>
 			<item value="casestudy"/>
 			<item value="employeesystem"/>
 			<item value="employee"/>
@@ -81,6 +85,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\PathuriNithin\caseStudy\JavaWeb\casestudy"/>
 			<item value="C:\PathuriNithin\eclipse-workspace"/>
 			<item value="C:\PathuriNithin\eclipse-workspace\springbootapp"/>
 		</list>

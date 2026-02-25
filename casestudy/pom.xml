@@ -1,208 +1,207 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<!-- Información del Proyecto -->
-	<groupId>com.ibm</groupId>
-	<artifactId>casestudy</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+  <!-- Project coordinates -->
+  <groupId>com.ibm</groupId>
+  <artifactId>casestudy</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
 
-	<!-- Editar el nombre (name) y la descripción (description) del Proyecto -->
-	<name>AwakeLab Maven Spring MVC</name>
-	<description>Proyecto Spring MVC con implementaciones basicas</description>
+  <name>AwakeLab Maven Spring MVC</name>
+  <description>Proyecto Spring MVC (WAR, Java 8) con Spring 5.3 + Spring Data JPA 2.7 (javax)</description>
 
-	<!-- Propiedades -->
-	<properties>
-		<!-- Codificación del Código Fuente -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <!-- Java and common versions -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
 
-		<!-- Versión Java en la cual fue creado el proyecto -->
-		<maven.compiler.source>1.8</maven.compiler.source>
+    <!-- Non-Spring versions -->
+    <hibernate.version>5.6.15.Final</hibernate.version>   <!-- javax-based Hibernate -->
+    <hikari.version>4.0.3</hikari.version>                <!-- Java 8 compatible -->
+    <mysql.version>8.0.33</mysql.version>
+    <jpa.api.version>2.2</jpa.api.version>
+    <slf4j.version>1.7.36</slf4j.version>
+    <servlet.api.version>4.0.1</servlet.api.version>      <!-- External Tomcat 9.x -->
+    <jsp.api.version>2.3.3</jsp.api.version>
+    <jstl.version>1.2</jstl.version>
+    <junit.jupiter.version>5.6.2</junit.jupiter.version>
+  </properties>
 
-		<!-- A qué versión de Java está apuntado el proyecto -->
-		<maven.compiler.target>1.8</maven.compiler.target>
+  <!-- Align Spring Framework 5.3.x with Spring Data 2.7.x -->
+  <dependencyManagement>
+    <dependencies>
+      <!-- Spring Framework BOM (5.3.x) -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-framework-bom</artifactId>
+        <version>5.3.30</version> <!-- latest 5.3.x available to you -->
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
 
-		<!-- Versiones de las Dependencias -->
-		<!-- Spring Framework -->
-		<org.springframework-version>5.2.7.RELEASE</org.springframework-version>
+      <!-- Spring Data BOM (2.7.x line, Release Train 2021.2.x) -->
+      <dependency>
+        <groupId>org.springframework.data</groupId>
+        <artifactId>spring-data-bom</artifactId>
+        <version>2021.2.9</version> <!-- a stable 2.7.x train -->
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-		<!-- Java Servlet API -->
-		<javax.servlet-api-version>4.0.1</javax.servlet-api-version>
+  <dependencies>
+    <!-- Spring core/web (versions from Spring BOM) -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+    </dependency>
 
-		<!-- JavaServer Pages API -->
-		<javax.servlet.jsp-api-version>2.3.3</javax.servlet.jsp-api-version>
+    <!-- Spring Data JPA (2.7.x via BOM) -->
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+    </dependency>
 
-		<!-- JavaServer Pages Standard Tag Library API -->
-		<javax.servlet.jstl-version>1.2</javax.servlet.jstl-version>
+    <!-- Hibernate 5.6.x (javax) -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${hibernate.version}</version>
+    </dependency>
 
-		<!-- JUnit -->
-		<org.junit.jupiter-version>5.6.2</org.junit.jupiter-version>
-	</properties>
+    <!-- JPA API (javax) -->
+    <dependency>
+      <groupId>javax.persistence</groupId>
+      <artifactId>javax.persistence-api</artifactId>
+      <version>${jpa.api.version}</version>
+    </dependency>
 
-	<!-- Información de el o los Desarrolladores -->
-	<developers>
-		<!-- Ejemplo -->
-		<developer>
-			<!-- Correo electrónico -->
-			<email>awaker@awakelab.cl</email>
+    <!-- Connection pool -->
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+      <version>${hikari.version}</version>
+    </dependency>
 
-			<!-- Identificador único (Nombre de usuario, nickname, etc.) -->
-			<id>Awaker</id>
+    <!-- MySQL driver -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.version}</version>
+    </dependency>
 
-			<!-- Nombre Completo o Parcial -->
-			<name>Awaker Awakerino</name>
+    <!-- Validation API (javax) -->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>2.0.1.Final</version>
+    </dependency>
 
-			<!-- Zona horaria donde te encuentras -->
-			<timezone>America/Santiago</timezone>
+    <!-- Servlet/JSP/JSTL (provided for external Tomcat) -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${servlet.api.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>${jsp.api.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>${jstl.version}</version>
+    </dependency>
 
-			<!-- Roles del desarrollador -->
-			<roles>
-				<role>Developer</role>
-				<role>Architect</role>
-				<role>DBA</role>
-				<role>...</role>
-			</roles>
-		</developer>
-	</developers>
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <!-- Bind SLF4J to java.util.logging (good with external Tomcat) -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
 
-	<!-- Dependencias -->
-	<dependencies>
-		<!-- Spring Framework: Context >
-		https://mvnrepository.com/artifact/org.springframework/spring-context -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
+    <!-- Tests -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-		<!-- Spring Framework: WebMVC >
-		https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
+  <build>
+    <finalName>${project.artifactId}-${project.version}</finalName>
+    <plugins>
+      <!-- Java compiler -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <compilerArgument>-Xlint:all</compilerArgument>
+          <showWarnings>true</showWarnings>
+          <showDeprecation>true</showDeprecation>
+        </configuration>
+      </plugin>
 
-		<!-- Java Servlet API >
-		https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>${javax.servlet-api-version}</version>
-			<scope>provided</scope>
-		</dependency>
+      <!-- WAR packaging (helpful defaults for external container) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.2</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+          <!-- Exclude nothing by default -->
+        </configuration>
+      </plugin>
 
-		<!-- JavaServer Pages API >
-		https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>${javax.servlet.jsp-api-version}</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Java Standard Tag Library >
-		https://mvnrepository.com/artifact/javax.servlet/jstl -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>${javax.servlet.jstl-version}</version>
-		</dependency>
-
-		<!-- JUnit Jupiter API >
-		https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>${org.junit.jupiter-version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- Source:
-		https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
-		<dependency>
-			<groupId>org.hibernate.orm</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>7.2.2.Final</version>
-			<scope>compile</scope>
-		</dependency>
-
-		
-		<!-- Source:
-		https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-			<version>2.7.18</version>
-			<scope>compile</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>2.0.1.Final</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>com.zaxxer</groupId>
-		    <artifactId>HikariCP</artifactId>
-		    <version>4.0.2</version>
-		    <scope>compile</scope>
-		</dependency>
-	
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.33</version>
-		</dependency>
-	</dependencies>
-
-	<build>
-		<!-- Nombre del archivo final de empaquetado -->
-		<finalName>${project.artifactId}-${project.version}</finalName>
-
-		<!-- Listado de Plugins a utilizar -->
-		<plugins>
-			<plugin>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.10</version>
-				<configuration>
-					<additionalProjectnatures>
-						<projectnature>
-							org.springframework.ide.eclipse.core.springnature</projectnature>
-					</additionalProjectnatures>
-					<additionalBuildcommands>
-						<buildcommand>
-							org.springframework.ide.eclipse.core.springbuilder</buildcommand>
-					</additionalBuildcommands>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>true</downloadJavadocs>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
-				<configuration>
-					<compilerArgument>-Xlint:all</compilerArgument>
-					<showWarnings>true</showWarnings>
-					<showDeprecation>true</showDeprecation>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>3.0.0</version>
-				<configuration>
-					<mainClass>org.test.int1.Main</mainClass>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+      <!-- (Optional) Surefire for JUnit 5 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version>
+        <configuration>
+          <includes>
+            <include>**/*Tests.java</include>
+            <include>**/*Test.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
